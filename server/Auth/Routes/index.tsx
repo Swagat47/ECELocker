@@ -10,7 +10,7 @@ import companyUserRelationCtrl from "../controllers/companyUserRelationCtrl";
 import { validAdminRegister, validRegister } from "../middleware/valid";
 import userCtrl from "../controllers/userCtrl";
 import avatarCtrl from "../controllers/avatarCtrl";
-const { upload } = require("../Storage/GridFS");
+const { upload } = require("../storage/GridFS");
 
 const router = express.Router();
 
