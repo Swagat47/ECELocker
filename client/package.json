@@ -24,6 +24,7 @@
     "react-router-dom": "^6.4.1",
     "react-scripts": "5.0.1",
     "react-spinners": "^0.13.8",
+    "react-table": "^7.8.0",
     "react-tailwindcss-select": "^1.6.0",
     "redux": "^4.2.0",
     "redux-thunk": "^2.4.1",
