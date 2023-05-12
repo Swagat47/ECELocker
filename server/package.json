@@ -1,5 +1,5 @@
 {
-  "name": "ECELocker",
+  "name": "server",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
@@ -10,15 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Swagat47/PlacementWebApp.git"
+    "url": "git+https://github.com/Swagat47/ECELocker.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Swagat47/PlacementWebApp/issues"
+    "url": "https://github.com/Swagat47/ECELocker/issues"
   },
-  "homepage": "https://github.com/Swagat47/PlacementWebApp#readme",
+  "homepage": "https://github.com/Swagat47/ECELocker#readme",
   "dependencies": {
     "@redux-devtools/extension": "^3.2.3",
     "bcrypt": "^5.0.1",
