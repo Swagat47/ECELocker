@@ -1,11 +1,11 @@
 import dotenv from "dotenv";
-dotenv.config();
-
 import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import morgan from "morgan";
 import router from "./Auth/Routes/index";
+
+dotenv.config();
 
 //Database
 import "./Auth/config/database";
@@ -26,5 +26,5 @@ app.use("/api", router);
 //Server Listerning
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
-  console.log("server is running on port", PORT, "http://localhost:4000/");
+  console.log("server is running on port", PORT);
 });

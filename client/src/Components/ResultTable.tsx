@@ -4,9 +4,9 @@ function ResultTable(semdata: any) {
   const data = semdata.semdata;
   // console.log(data, "result table data");
   return (
-    <div className="relative overflow-x-auto mb-2">
-      <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-        <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+    <div className="relative overflow-x-auto mb-2 border-2">
+      <table className="w-full text-sm text-left text-gray-500">
+        <thead className="text-xs text-gray-700 uppercase bg-gray-300 ">
           <tr>
             <th scope="col" className="px-6 py-3">
               COURSE
@@ -28,10 +28,10 @@ function ResultTable(semdata: any) {
         <tbody>
           {data.map((row: any) => {
             return (
-              <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+              <tr className="bg-white border-b ">
                 <th
                   scope="row"
-                  className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap "
                 >
                   {row[0]}
                 </th>
