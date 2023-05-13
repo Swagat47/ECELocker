@@ -45,6 +45,10 @@ export interface INotice extends Document {
   name: string;
   docId: string;
 }
+export interface INotes extends Document {
+  name: string;
+  docId: string;
+}
 
 export interface IResume extends Document {
   name: string;

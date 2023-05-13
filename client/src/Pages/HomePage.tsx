@@ -183,9 +183,9 @@ const HomePage = () => {
                   alt=""
                 />
               </div>
-              <div>OPPORTUNITIES</div>
+              <div>STUDY MATERIAL</div>
               <div className="text-center  w-4/5 ">
-                Detailed information of all recruiters coming for placements.
+                Upload or Download latest notes from your batchmates.
               </div>
             </div>
           </Link>

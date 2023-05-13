@@ -76,7 +76,7 @@ const ResumePage = () => {
       <nav>
         <div className="flex justify-between self-end gap-6 bg-our-blue text-white font-robotoslab font-medium w-full h-3/4 px-20">
           <div className="flex items-center text-navtext h-full overflow-y-hidden invisible sm:visible">
-            <div className="text-navbigtext">Resume</div>
+            <div className="text-navbigtext">Personal Documents</div>
           </div>
           <div className="flex items-center text-navtext h-full py-2">
             <Link to="/">

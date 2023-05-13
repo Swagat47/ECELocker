@@ -10,12 +10,13 @@ import companyUserRelationCtrl from "../controllers/companyUserRelationCtrl";
 import { validAdminRegister, validRegister } from "../middleware/valid";
 import userCtrl from "../controllers/userCtrl";
 import avatarCtrl from "../controllers/avatarCtrl";
+import notesCtrl from "../controllers/notesCtrl";
 const { upload } = require("../storage/GridFS");
 
 const router = express.Router();
 
 router.post("/register", validRegister, authCtrl.register);
-router.post('/admin/register', validAdminRegister, authCtrl.adminregister);
+router.post("/admin/register", validAdminRegister, authCtrl.adminregister);
 router.post("/updateInfo", authCtrl.updateInfo);
 router.post("/active", authCtrl.activeAccount);
 router.post("/login", authCtrl.login);
@@ -30,6 +31,10 @@ router.delete("/file/:id", fileCtrl.delete_file);
 router.get("/notice", noticeCtrl.getNotice);
 router.post("/notice/upload", upload.single("file"), noticeCtrl.upload_notice);
 router.delete("/notice/:id", noticeCtrl.delete_notice);
+
+router.get("/notes", notesCtrl.getNotes);
+router.post("/notes/upload", upload.single("file"), notesCtrl.upload_notes);
+router.delete("/notes/:id", notesCtrl.delete_notes);
 
 router.post("/resume", resumeCtrl.getResume);
 router.post("/resume/upload", upload.single("file"), resumeCtrl.upload_resume);
@@ -56,7 +61,7 @@ router.post("/company/get_user_info", companyUserRelationCtrl.get_user_info);
 
 router.post("/contact", contactCtrl.contact);
 
-router.get("/statistics/get_year_stats", statisticsCtrl.get_group_statistics)
+router.get("/statistics/get_year_stats", statisticsCtrl.get_group_statistics);
 router.post("/statistics/upload", statisticsCtrl.upload_statistics);
 router.post("/statistics/filter", statisticsCtrl.filter_statistics);
 
@@ -64,7 +69,11 @@ router.get("/users", userCtrl.getUsers);
 router.post("/users/status_placed", userCtrl.statusPlaced);
 router.post("/users/update_cluster", userCtrl.updateCluster);
 
-router.post("/users/avatar_upload", upload.single("image"), avatarCtrl.upload_image);
+router.post(
+  "/users/avatar_upload",
+  upload.single("image"),
+  avatarCtrl.upload_image
+);
 router.post("/users/avatar_delete/:id", avatarCtrl.delete_image);
 router.post("/users/avatar_get", avatarCtrl.getImage);
 

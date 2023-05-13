@@ -16,13 +16,12 @@ const UserTemplate = ({ items }: { items: any }) => {
   const [loading, setLoading] = useState(false);
   const [posts, setPosts] = useState([]);
   const [searchText, setSearchText] = useState("");
-  // const [userName, setUserName] = useState("");
-  // const [userEmail, setUserEmail] = useState("");
-  // const [userBranch, setUserBranch] = useState("");
+
   const [companyName, setCompanyName] = useState("");
   const [companyCTC, setCompanyCTC] = useState("");
   const [placementYear, setPlacementYear] = useState("");
   const [placementCluster, setPlacementCluster] = useState("");
+  const context = useContext(InfoContext); //context contains the user data
 
   const [selectedClusters, setSelectedClusters] = useState(
     new Array(clustersSize).fill(false)
@@ -52,6 +51,7 @@ const UserTemplate = ({ items }: { items: any }) => {
       setLoading(false);
     };
     getAllPosts();
+    console.log("items", items);
   }, []);
 
   const handleClick = (e: any) => {
@@ -102,89 +102,90 @@ const UserTemplate = ({ items }: { items: any }) => {
 
   return (
     <>
-      <div className="flex py-4 rounded-lg mb-4 shadow-lg bg-white mx-10 justify-between">
-        <div className="ml-5  w-1/5 px-3 py-0">{items.rollnumber}</div>
-        <div className="mx-10 w-2/5 px-3 py-0">{items.name}</div>
+      {items.role === "user" ? (
+        <div className="flex py-4 rounded-lg mb-4 shadow-lg bg-white mx-10 justify-between">
+          <div className="ml-5  w-1/5 px-3 py-0">{items.rollnumber}</div>
+          <div className="mx-10 w-2/5 px-3 py-0">{items.name}</div>
 
-        <div className="mx-10  px-3 py-0">
-          <button
-            className={`bg-gray-500 hover:bg-green-500 text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-4 py-2 
+          <div className="mx-10  px-3 py-0">
+            <button
+              className={`bg-gray-500 hover:bg-green-500 text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-4 py-2 
             ${isGreen ? "bg-green-500" : "bg-gray-500"}`}
-            onClick={() => setPlacedShowModal(true)}
-            // onClick={handleClick}
-          >
-            {isGreen ? "Placed" : "Unplaced"}
-          </button>
-          {placedShowModal ? (
-            <>
-              <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-                <div className="relative w-auto my-6 mx-auto max-w-3xl">
-                  {/*content*/}
-                  <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-                    {/*header*/}
-                    <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
-                      <h3 className="text-3xl font-semibold">
-                        Company Details
-                      </h3>
-                      <button
-                        className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
-                        onClick={() => setPlacedShowModal(false)}
-                      >
-                        <span className="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
-                          ×
-                        </span>
-                      </button>
-                    </div>
-                    {/*body*/}
-                    <div className="relative p-6 flex-auto ">
-                      <form
-                        onSubmit={handleClick}
-                        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 grid grid-cols-2 gap-4"
-                      >
-                        <div className="mb-4">
-                          <label className="block text-gray-700 text-sm font-bold mb-2">
-                            Placement Year
-                          </label>
-                          <input
-                            required
-                            value={placementYear}
-                            onChange={(e) => setPlacementYear(e.target.value)}
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            type="text"
-                          />
-                        </div>
-                        <div className="mb-4">
-                          <label className="block text-gray-700 text-sm font-bold mb-2">
-                            Placement Cluster
-                          </label>
-                          <input
-                            required
-                            value={placementCluster}
-                            onChange={(e) =>
-                              setPlacementCluster(e.target.value)
-                            }
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            type="text"
-                          />
-                        </div>
-                        <div className="mb-4">
-                          <label className="block text-gray-700 text-sm font-bold mb-2">
-                            Company CTC (in LPA)
-                          </label>
-                          <input
-                            required
-                            value={companyCTC}
-                            onChange={(e) => setCompanyCTC(e.target.value)}
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            type="text"
-                            placeholder="Company CTC"
-                          />
-                        </div>
-                        <div className="mb-4">
-                          <label className="block text-gray-700 text-sm font-bold mb-2">
-                            Company Name
-                          </label>
-                          {/* <input
+              onClick={() => setPlacedShowModal(true)}
+              // onClick={handleClick}
+            >
+              {isGreen ? "Placed" : "Unplaced"}
+            </button>
+            {placedShowModal ? (
+              <>
+                <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+                  <div className="relative w-auto my-6 mx-auto max-w-3xl">
+                    {/*content*/}
+                    <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                      {/*header*/}
+                      <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
+                        <h3 className="text-3xl font-semibold">
+                          Company Details
+                        </h3>
+                        <button
+                          className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
+                          onClick={() => setPlacedShowModal(false)}
+                        >
+                          <span className="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
+                            ×
+                          </span>
+                        </button>
+                      </div>
+                      {/*body*/}
+                      <div className="relative p-6 flex-auto ">
+                        <form
+                          onSubmit={handleClick}
+                          className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 grid grid-cols-2 gap-4"
+                        >
+                          <div className="mb-4">
+                            <label className="block text-gray-700 text-sm font-bold mb-2">
+                              Placement Year
+                            </label>
+                            <input
+                              required
+                              value={placementYear}
+                              onChange={(e) => setPlacementYear(e.target.value)}
+                              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                              type="text"
+                            />
+                          </div>
+                          <div className="mb-4">
+                            <label className="block text-gray-700 text-sm font-bold mb-2">
+                              Placement Cluster
+                            </label>
+                            <input
+                              required
+                              value={placementCluster}
+                              onChange={(e) =>
+                                setPlacementCluster(e.target.value)
+                              }
+                              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                              type="text"
+                            />
+                          </div>
+                          <div className="mb-4">
+                            <label className="block text-gray-700 text-sm font-bold mb-2">
+                              Company CTC (in LPA)
+                            </label>
+                            <input
+                              required
+                              value={companyCTC}
+                              onChange={(e) => setCompanyCTC(e.target.value)}
+                              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                              type="text"
+                              placeholder="Company CTC"
+                            />
+                          </div>
+                          <div className="mb-4">
+                            <label className="block text-gray-700 text-sm font-bold mb-2">
+                              Company Name
+                            </label>
+                            {/* <input
                                 // value={companyName}
                                 // required
                                 // onChange={(e) => setcompanyName(e.target.value)}
@@ -192,13 +193,13 @@ const UserTemplate = ({ items }: { items: any }) => {
                                 type="text"
                                 placeholder="Company Name"
                               /> */}
-                          <input
-                            required
-                            // value={companyName}
-                            value={companyName}
-                            // onChange={(e) => setCompanyName(e.target.value)}
-                            type="search"
-                            className="
+                            <input
+                              required
+                              // value={companyName}
+                              value={companyName}
+                              // onChange={(e) => setCompanyName(e.target.value)}
+                              type="search"
+                              className="
                                   form-control
                                   block
                                   w-full
@@ -215,139 +216,142 @@ const UserTemplate = ({ items }: { items: any }) => {
                                   m-0
                                   focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
                                 "
-                            id="exampleSearch"
-                            placeholder="Company Name"
-                            // placeholder={companyName}
-                            // onChange={(e) => setSearchText(e.target.value)}
-                            onChange={handleNameChange}
-                          />
-                          {loading ? (
-                            <h2>Loading...</h2>
-                          ) : (
-                            posts
-                              .filter((value: any) => {
-                                if (searchText == "") {
-                                  return value;
-                                } else if (
-                                  value.name
-                                    .toLowerCase()
-                                    .includes(searchText.toLowerCase())
-                                ) {
-                                  return value;
-                                }
-                              })
-                              .map((item: any) => {
-                                return (
-                                  <h2>
-                                    <button
-                                      type="button"
-                                      onClick={() => setCompanyName(item.name)}
-                                      className="inline-block px-6 py-2 border-1 border-gray-100 text-100 font-medium text-sm leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
-                                    >
-                                      {item.name}
-                                    </button>
-                                  </h2>
-                                );
-                              })
-                          )}
-                        </div>
+                              id="exampleSearch"
+                              placeholder="Company Name"
+                              // placeholder={companyName}
+                              // onChange={(e) => setSearchText(e.target.value)}
+                              onChange={handleNameChange}
+                            />
+                            {loading ? (
+                              <h2>Loading...</h2>
+                            ) : (
+                              posts
+                                .filter((value: any) => {
+                                  if (searchText == "") {
+                                    return value;
+                                  } else if (
+                                    value.name
+                                      .toLowerCase()
+                                      .includes(searchText.toLowerCase())
+                                  ) {
+                                    return value;
+                                  }
+                                })
+                                .map((item: any) => {
+                                  return (
+                                    <h2>
+                                      <button
+                                        type="button"
+                                        onClick={() =>
+                                          setCompanyName(item.name)
+                                        }
+                                        className="inline-block px-6 py-2 border-1 border-gray-100 text-100 font-medium text-sm leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
+                                      >
+                                        {item.name}
+                                      </button>
+                                    </h2>
+                                  );
+                                })
+                            )}
+                          </div>
 
-                        <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
-                          <button
-                            className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                            type="button"
-                            onClick={() => setPlacedShowModal(false)}
-                          >
-                            Close
-                          </button>
-                          <button
-                            className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                            type="submit"
-                          >
-                            Save Changes
-                          </button>
-                        </div>
-                      </form>
+                          <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
+                            <button
+                              className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                              type="button"
+                              onClick={() => setPlacedShowModal(false)}
+                            >
+                              Close
+                            </button>
+                            <button
+                              className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                              type="submit"
+                            >
+                              Save Changes
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                      {/*footer*/}
                     </div>
-                    {/*footer*/}
                   </div>
                 </div>
-              </div>
-              <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
-            </>
-          ) : null}
-        </div>
-        <div className="mr-5">
-          <button
-            type="submit"
-            className="mr-3 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2"
-            onClick={openClusterModal}
-          >
-            Clusters
-          </button>
-          {clusterShowModal ? (
-            <>
-              <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-                <div className="relative w-auto my-6 mx-auto max-w-3xl">
-                  {/*content*/}
-                  <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-                    {/*header*/}
-                    <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
-                      <h3 className="text-3xl font-semibold">Clusters</h3>
-                    </div>
-                    {/*body*/}
-                    <div className="relative p-6 flex-auto ">
-                      <form
-                        onSubmit={handleClusterSubmit}
-                        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 grid grid-cols-3 gap-4"
-                      >
-                        {Array(clustersSize)
-                          .fill(0)
-                          .map((_, i) => (
-                            <div key={i} className="flex items-center mr-4">
-                              <input
-                                id="inline-checkbox"
-                                type="checkbox"
-                                value=""
-                                onChange={() => handleOnClusterChange(i)}
-                                checked={selectedClusters[i]}
-                                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                              />
-                              <label
-                                htmlFor="inline-checkbox"
-                                className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                              >
-                                {i + 1}
-                              </label>
-                            </div>
-                          ))}
+                <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+              </>
+            ) : null}
+          </div>
+          <div className="mr-5">
+            <button
+              type="submit"
+              className="mr-3 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2"
+              onClick={openClusterModal}
+            >
+              Clusters
+            </button>
+            {clusterShowModal ? (
+              <>
+                <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+                  <div className="relative w-auto my-6 mx-auto max-w-3xl">
+                    {/*content*/}
+                    <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                      {/*header*/}
+                      <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
+                        <h3 className="text-3xl font-semibold">Clusters</h3>
+                      </div>
+                      {/*body*/}
+                      <div className="relative p-6 flex-auto ">
+                        <form
+                          onSubmit={handleClusterSubmit}
+                          className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 grid grid-cols-3 gap-4"
+                        >
+                          {Array(clustersSize)
+                            .fill(0)
+                            .map((_, i) => (
+                              <div key={i} className="flex items-center mr-4">
+                                <input
+                                  id="inline-checkbox"
+                                  type="checkbox"
+                                  value=""
+                                  onChange={() => handleOnClusterChange(i)}
+                                  checked={selectedClusters[i]}
+                                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                />
+                                <label
+                                  htmlFor="inline-checkbox"
+                                  className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                                >
+                                  {i + 1}
+                                </label>
+                              </div>
+                            ))}
 
-                        <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
-                          <button
-                            className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                            type="button"
-                            onClick={() => setClusterShowModal(false)}
-                          >
-                            Close
-                          </button>
-                          <button
-                            className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                            type="submit"
-                          >
-                            Save Changes
-                          </button>
-                        </div>
-                      </form>
+                          <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
+                            <button
+                              className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                              type="button"
+                              onClick={() => setClusterShowModal(false)}
+                            >
+                              Close
+                            </button>
+                            <button
+                              className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                              type="submit"
+                            >
+                              Save Changes
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                      {/*footer*/}
                     </div>
-                    {/*footer*/}
                   </div>
                 </div>
-              </div>
-              <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
-            </>
-          ) : null}
+                <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+              </>
+            ) : null}
+          </div>
         </div>
-      </div>
+      ) : null}
     </>
   );
 };
@@ -410,7 +414,7 @@ const UserProfilePage = () => {
   }, []);
 
   React.useEffect(() => {
-    axios.get("http://localhost:4000/api/users").then((response) => {
+    axios.get(`${backendUrl}/api/users`).then((response) => {
       setList(response.data);
     });
     console.log(list);
@@ -465,7 +469,7 @@ const UserProfilePage = () => {
 
   console.log("img", showAvatar);
   return (
-    <div className="flex flex-col md:flex-row h-screen w-screen bg-white">
+    <div className="flex flex-col md:flex-row h-screen w-screen bg-white overflow-x-hidden">
       {isUser ? (
         <>
           <div
