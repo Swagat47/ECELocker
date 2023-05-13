@@ -12,10 +12,10 @@ const RegisterPage = () => {
     new Array(clustersSize).fill(false)
   );
   const handleOnClusterChange = (position: any) => {
-    const updatedCheckedState = checkedState.map((item, index) =>
-      index === position ? !item : item
-    );
-    setCheckedState(updatedCheckedState);
+    // const updatedCheckedState = checkedState.map((item, index) =>
+    //   index === position ? !item : item
+    // );
+    // setCheckedState(updatedCheckedState);
   };
   const [form, setForm] = useState({
     name: "",
@@ -30,22 +30,25 @@ const RegisterPage = () => {
     percentage12th: "",
     backlogs: "",
     phone: "",
-    clusters: [] as any
+    // clusters: [] as any
   });
 
   const register = (e: any) => {
-    const selectedClusters = [] as any
-    checkedState.forEach((item, index) => { if (item) selectedClusters.push(index + 1) })
-    if (selectedClusters.length !== 3) {
-      alert("You can select exactly 3 clusters")
-      return;
-    }
-    form.clusters = selectedClusters
+    e.preventDefault();
+    // const selectedClusters = [] as any;
+    // checkedState.forEach((item, index) => {
+    //   if (item) selectedClusters.push(index + 1);
+    // });
+    // if (selectedClusters.length !== 3) {
+    //   alert("You can select exactly 3 clusters");
+    //   return;
+    // }
+    // form.clusters = selectedClusters;
     // setForm({...form, clusters: selectedClusters})
-    setShowModal(false)
-    console.log(form)
-    if(form.branch==="0" || form.branch===""){
-      alert("Please select a branch")
+    // setShowModal(false);
+    console.log(form);
+    if (form.branch === "0" || form.branch === "") {
+      alert("Please select a branch");
       return;
     }
     axios
@@ -64,19 +67,23 @@ const RegisterPage = () => {
   };
 
   const handleOnBranchChange = (e: any) => {
-      setForm({ ...form, branch: e.target.value });
+    setForm({ ...form, branch: e.target.value });
   };
 
   return (
-    <div className="flex BG h-screen w-screen bg-white min-h-screen flex items-center justify-center">
+    <div className=" BG h-screen w-screen bg-white min-h-screen flex items-center justify-center">
       {/* <div className="LBG h-full w-2/5 bg-our-blue flex items-center justify-center">
         <div className="IMGBG overflow-hidden h-4/5 w-4/6 bg-white rounded-3xl ">
           <img className="object-fill h-full w-full" src={ped} alt="" />
         </div>
       </div> */}
       <div className="lg:block hidden h-screen w-1/2 ">
-        <img className="object-fill justify-center border-8 border-our-blue rounded-2xl h-full w-full" src={ped} alt="" />
-        </div>
+        <img
+          className="object-fill justify-center border-8 border-our-blue rounded-2xl h-full w-full"
+          src={ped}
+          alt=""
+        />
+      </div>
       <div className="RBG h-screen flex-1 flex items-center justify-center">
         <div className="flex flex-col h-full pr-0 mx-20 flex-1">
           <div className="pt-10 pb-10  font-montserrat text-login flex justify-center">
@@ -86,7 +93,7 @@ const RegisterPage = () => {
             </div>
           </div>
 
-          <form onSubmit={(e) => { e.preventDefault(); setShowModal(true) }} className="w-full ">
+          <form onSubmit={register} className="w-full ">
             <div className="form">
               <div className="h-[30rem] pr-8 pb-8 scrollbar scrollbar-thumb-gray-900">
                 <div className="flex items-center border-b border-black my-8">
@@ -155,22 +162,56 @@ const RegisterPage = () => {
                 </div>
 
                 <div className="flex items-center border-b border-black my-16">
-
-                  <label htmlFor="underline_select" className="sr-only">Underline select</label>
-                  <select id="underline_select" 
-                  required
-                  onClick = {(e) => {handleOnBranchChange(e)}}
-                  className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none text-email">
-                    <option className="text-lg" value="0" selected disabled>Branch</option>
-                    <option className="text-lg" value="Computer Science (B.Tech)">Computer Science (B.Tech)</option>
-                    <option className="text-lg" value="Computer Science (Dual)">Computer Science (Dual)</option>
-                    <option className="text-lg" value="Electronics and Communication (B.Tech)">Electronics and Communication (B.Tech)</option>
-                    <option className="text-lg" value="Electronics and Communication (Dual Degree)">Electronics and Communication (Dual Degree)</option>
-                    <option className="text-lg" value="Mechanical">Mechanical</option>
-                    <option className="text-lg" value="Civil">Civil</option>
-                    <option className="text-lg" value="Chemical">Chemical</option>
-                    <option className="text-lg" value="Electrical">Electrical</option>
-                    <option className="text-lg" value="Material Science">Material Science</option>
+                  <label htmlFor="underline_select" className="sr-only">
+                    Underline select
+                  </label>
+                  <select
+                    id="underline_select"
+                    required
+                    onClick={(e) => {
+                      handleOnBranchChange(e);
+                    }}
+                    className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none text-email"
+                  >
+                    <option className="text-lg" value="0" selected disabled>
+                      Branch
+                    </option>
+                    <option
+                      className="text-lg"
+                      value="Computer Science (B.Tech)"
+                    >
+                      Computer Science (B.Tech)
+                    </option>
+                    <option className="text-lg" value="Computer Science (Dual)">
+                      Computer Science (Dual)
+                    </option>
+                    <option
+                      className="text-lg"
+                      value="Electronics and Communication (B.Tech)"
+                    >
+                      Electronics and Communication (B.Tech)
+                    </option>
+                    <option
+                      className="text-lg"
+                      value="Electronics and Communication (Dual Degree)"
+                    >
+                      Electronics and Communication (Dual Degree)
+                    </option>
+                    <option className="text-lg" value="Mechanical">
+                      Mechanical
+                    </option>
+                    <option className="text-lg" value="Civil">
+                      Civil
+                    </option>
+                    <option className="text-lg" value="Chemical">
+                      Chemical
+                    </option>
+                    <option className="text-lg" value="Electrical">
+                      Electrical
+                    </option>
+                    <option className="text-lg" value="Material Science">
+                      Material Science
+                    </option>
                   </select>
                 </div>
 
@@ -251,7 +292,6 @@ const RegisterPage = () => {
                     aria-label="Phone Number"
                   />
                 </div>
-
               </div>
 
               <div className=" flex text-email justify-center mt-10">
@@ -279,24 +319,21 @@ const RegisterPage = () => {
           </div>
         </div>
       </div>
-      {showModal ? (
+      {/* {showModal ? (
         <>
-          <div
-            className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
-          >
+          <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
-              {/*content*/}
+              
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-                {/*header*/}
+                
                 <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
-                  <h3 className="text-3xl font-semibold">
-                    Choose Clusters
-                  </h3>
+                  <h3 className="text-3xl font-semibold">Choose Clusters</h3>
                 </div>
-                {/*body*/}
+              
                 <div className="relative p-6 flex-auto grid grid-cols-2">
-                  {
-                    Array(clustersSize).fill(0).map((_, i) => {
+                  {Array(clustersSize)
+                    .fill(0)
+                    .map((_, i) => {
                       return (
                         <div className="flex items-center mr-4">
                           <input
@@ -314,11 +351,10 @@ const RegisterPage = () => {
                             {i + 1}
                           </label>
                         </div>
-                      )
-                    })
-                  }
+                      );
+                    })}
                 </div>
-                {/*footer*/}
+                
                 <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
                   <button
                     className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
@@ -340,7 +376,7 @@ const RegisterPage = () => {
           </div>
           <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
         </>
-      ) : null}
+      ) : null} */}
     </div>
   );
 };

@@ -57,7 +57,7 @@ const authCtrl = {
         backlogs,
         phone,
         password,
-        clusters,
+        // clusters,
       } = req.body;
       const user = await Users.findOne({ email });
       if (user) return res.status(400).json({ msg: "Account already exists." });
@@ -76,7 +76,7 @@ const authCtrl = {
         percentage12th,
         backlogs,
         phone,
-        clusters,
+        // clusters,
       };
 
       const active_token = generateActiveToken({ newUser });

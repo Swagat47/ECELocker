@@ -517,7 +517,7 @@ const UserProfilePage = () => {
               </div>
             )}
 
-            <div className="flex flex-col md:flex-row mt-2 sm:mt-10  bg-our-blue text-sm lg:text-lg font-montserrat h-36  w-fit   rounded-lg leading-1 ">
+            <div className="flex flex-row md:flex-row mt-2 sm:mt-10  bg-our-blue text-sm lg:text-lg font-montserrat h-36 w-fit  rounded-lg leading-1 ">
               <div
                 className="bg-white border-2 h-full px-12 py-2"
                 {...getRootProps()}
@@ -567,15 +567,18 @@ const UserProfilePage = () => {
               <form onSubmit={handleSubmit} className="w-full ">
                 <div className="form ">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12">
-                    <div className="flex items-center border-b border-black my-4">
-                      <input
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none text-lg font-montserrat"
-                        type="text"
-                        placeholder="First Name"
-                        aria-label="First Name"
-                      />
+                    <div className="flex flex-col items-start border-b border-black my-4">
+                      <div className="px-2 text-xxs font-bold">Name</div>
+                      <div>
+                        <input
+                          value={name}
+                          onChange={(e) => setName(e.target.value)}
+                          className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none text-lg font-montserrat"
+                          type="text"
+                          placeholder="First Name"
+                          aria-label="First Name"
+                        />
+                      </div>
                     </div>
 
                     <div className="flex items-center border-b border-black my-4">
