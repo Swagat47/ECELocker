@@ -50,30 +50,37 @@ const StudentResultPage = () => {
         </div>
       </nav>
       <div className="flex place-content-end mr-20 mt-4">
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={generatePDF}>
+        <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          onClick={generatePDF}
+        >
           PRINT
         </button>
       </div>
-      <div ref={componentPDF} style={{width:'100%', margin: "0", padding: "0", overflow: "hidden"}}>
-        <div className="grid grid-cols-2 mt-4 pl-20 font-montserrat text-xl font-bold">
+      <div
+        ref={componentPDF}
+        style={{ width: "100%", margin: "0", padding: "0", overflow: "hidden" }}
+        className="flex flex-col justify-center items-center"
+      >
+        <div className="grid grid-cols-2 mt-4 font-montserrat text-xl font-bold w-3/6">
           <div>
-            <article className="">
+            <article className="border-2">
               ROLL NUMBER: <span>{data._id}</span>
             </article>
-            <article>
+            <article className="border-2">
               CGPI: <span>{data.cgpi}</span>
             </article>
           </div>
           <div>
-            <article>
+            <article className="border-2">
               NAME: <span>{data.name}</span>
             </article>
-            <article>
+            <article className="border-2">
               LATEST SGPI: <span>{data.sgpi}</span>
             </article>
           </div>
         </div>
-        <div className="flex flex-col mx-20 mt-8">
+        <div className="flex flex-col mt-8">
           {data.result.map((sem: any) => {
             if (sem === null) return null;
             return <ResultTable semdata={sem} />;
