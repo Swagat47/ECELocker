@@ -7,7 +7,7 @@ import morgan from "morgan";
 import router from "./Auth/Routes/index";
 
 //Database
-import "./Auth/config/database";
+// import "./Auth/config/database";
 
 //Middleware
 const app = express();

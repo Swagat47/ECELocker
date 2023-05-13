@@ -46,12 +46,12 @@ const UserTemplate = ({ items }: { items: any }) => {
   useEffect(() => {
     const getAllPosts = async () => {
       setLoading(true);
-      const res = await axios.get("http://localhost:4000/api/company");
+      const res = await axios.get(`${backendUrl}/api/company`);
       setPosts(res.data);
       setLoading(false);
     };
     getAllPosts();
-    console.log("items", items);
+    // console.log("items", items);
   }, []);
 
   const handleClick = (e: any) => {
