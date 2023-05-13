@@ -7,7 +7,7 @@ import morgan from "morgan";
 import router from "./Auth/Routes/index";
 
 //Database
-// import "./Auth/config/database";
+import "./Auth/config/database";
 
 //Middleware
 const app = express();
@@ -16,11 +16,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
-// app.use(morgan("dev"));
-// app.use(cookieParser());
+app.use(morgan("dev"));
+app.use(cookieParser());
 
 //Routes
-// app.use("/api", router);
+app.use("/api", router);
 
 //Server Listerning
 const PORT = process.env.PORT || 4000;
