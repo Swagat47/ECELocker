@@ -19,20 +19,23 @@ const LoginPage = () => {
 
   const HandleLogin = (e: any) => {
     e.preventDefault();
+
     axios.post(`${backendUrl}/api/login`, form).then((res) => {
       if (context) context.setInfo(res.data.user);
       navigate("/");
+    }).catch((err) => {
+      alert("Invalid Credentials! Check your email and password");
     });
   };
 
   return (
-    <div className="flex BG h-screen w-screen bg-white min-h-screen flex  items-center  grid-col-1 ml-0">
+    <div className="flex BG h-screen w-screen bg-white min-h-screen items-center  grid-col-1 ml-0">
       {/* <div className="LBG h-full w-full bg-our-blue md:block hidden w-1/2 flex items-center justify-center">
         <div className="IMGBG overflow-hidden h-4/5  w-4/5 bg-white rounded-3xl ">  */}
       <div className="md:block md:visible hidden  h-screen w-1/2">
         {/* <div className="md:block md:visible hidden  w-1/2"> */}
         <img
-          className="object-fill justify-center border-8 border-our-blue rounded-2xl h-full w-full"
+          className="object-fill justify-center border-8 border-our-blue  h-full w-full"
           src={ped}
           alt=""
         />
