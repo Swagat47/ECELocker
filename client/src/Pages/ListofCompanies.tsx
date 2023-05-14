@@ -38,9 +38,14 @@ const StudentResultPage = () => {
   }
   const handleSearch = (e: any) => {
     e.preventDefault();
-    // setLoading(true);
+    setLoading(true);
     console.log(searchValue);
-    // setLoading(false);
+    axios.get(`${resultUrl}/${searchValue}.json`).then((response) => {
+      // const result = response.data({ semdata: x.result}));
+      setData(response.data);
+      // console.log(result);
+      setLoading(false);
+    });
   };
   return (
     <>
@@ -149,6 +154,32 @@ const StudentResultPage = () => {
                 </div>
               </div>
             </form>
+            {data === null ? null : (
+              <>
+                <div className="grid grid-cols-2 mt-4 font-montserrat text-xl font-bold w-3/6">
+                  <div>
+                    <article className="border-2">
+                      ROLL NUMBER: <span>{data._id}</span>
+                    </article>
+                    <article className="border-2">
+                      CGPI: <span>{data.cgpi}</span>
+                    </article>
+                  </div>
+                  <div>
+                    <article className="border-2">
+                      NAME: <span>{data.name}</span>
+                    </article>
+                    <article className="border-2">
+                      LATEST SGPI: <span>{data.sgpi}</span>
+                    </article>
+                  </div>
+                </div>
+                {data.result.map((sem: any) => {
+                  if (sem === null) return null;
+                  return <ResultTable semdata={sem} />;
+                })}
+              </>
+            )}
           </>
         )}
       </div>
