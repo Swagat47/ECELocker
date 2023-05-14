@@ -34,7 +34,8 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route path="/active/:token" element={<ActivatePage />} />
+          {/* <Route path="/active/:token" element={<ActivatePage />} /> */}
+          <Route path="/active" element={<ActivatePage />} />
         </Routes>
         <Routes>
           <Route element={context?.info ? <Navigate to={"/"} /> : <Outlet />}>
