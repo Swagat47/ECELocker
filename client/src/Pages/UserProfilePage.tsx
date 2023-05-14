@@ -474,7 +474,7 @@ const UserProfilePage = () => {
         <>
           <div
             id="LBG"
-            className="h-full w-full md:w-[30%] xl:w-1/4 bg-our-blue  flex flex-col items-center justify-center"
+            className="h-full w-full md:w-[30%] xl:w-1/4 bg-our-blue flex flex-col items-center justify-center"
           >
             {/* <div className=" w-52 h-52 shrink-0 grow-0 bg-red-600 rounded-full">
              
@@ -504,11 +504,11 @@ const UserProfilePage = () => {
               </div>
             )}
 
-            <div className="mt-5 grid-cols-1 gap-2 font-montserrat text-white text-xl    ">
+            <div className="mt-5 grid-cols-1 gap-2 font-montserrat text-white text-xl">
               <div className="text-center">{name}</div>
               <div className="text-center">{email}</div>
               <div className="text-center">
-                {branch}/{programme}
+                {programme}
               </div>
             </div>
             {isPlaced ? (
@@ -521,7 +521,7 @@ const UserProfilePage = () => {
               </div>
             )}
 
-            <div className="flex flex-row md:flex-row mt-2 sm:mt-10  bg-our-blue text-sm lg:text-lg font-montserrat h-36 w-fit  rounded-lg leading-1 ">
+            <div className="flex flex-col md:flex-col mt-2 sm:mt-10 bg-our-blue text-sm lg:text-lg font-montserrat h-36 w-full  rounded-lg leading-1 mx-5 justify-end">
               <div
                 className="bg-white border-2 h-full px-12 py-2"
                 {...getRootProps()}
@@ -554,8 +554,8 @@ const UserProfilePage = () => {
           <div className="RBG h-screen flex-1 flex items-center">
             <div className="absolute top-4 right-4 flex flex-col sm:flex-row justify-end">
               <a href="/login">
-                <button className="float-left ml-2 mt-1 sm:mt-0 bg-white md:bg-our-blue hover:bg-blue-600 text-our-blue md:text-white text-sm font-bold rounded px-2 py-1">
-                  LogOut
+                <button className="float-left ml-2 mt-1 sm:mt-0 bg-white md:bg-our-blue hover:bg-blue-600 text-our-blue md:text-white text-sm rounded px-4 py-2">
+                  Log Out
                 </button>
               </a>
             </div>
@@ -585,119 +585,159 @@ const UserProfilePage = () => {
                       </div>
                     </div>
 
-                    <div className="flex items-center border-b border-black my-4">
-                      <input
-                        value={personalemail}
-                        onChange={(e) => setPersonalemail(e.target.value)}
-                        className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none text-lg font-montserrat"
-                        type="text"
-                        placeholder="Email"
-                        aria-label="Email"
-                      />
+                    <div className="flex flex-col items-start border-b border-black my-4">
+                      <div className="px-2 text-xxs font-bold">
+                        Personal Email
+                      </div>
+                      <div>
+                        <input
+                          value={personalemail}
+                          onChange={(e) => setPersonalemail(e.target.value)}
+                          className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none text-lg font-montserrat"
+                          type="text"
+                          placeholder="Email"
+                          aria-label="Email"
+                        />
+                      </div>
                     </div>
 
-                    <div className="flex items-center border-b border-black my-4">
-                      <input
-                        disabled
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none text-lg font-montserrat"
-                        type="text"
-                        placeholder="College Email"
-                        aria-label="College Email"
-                      />
+                    <div className="flex flex-col items-start border-b border-black my-4">
+                      <div className="px-2 text-xxs font-bold">
+                        College Email
+                      </div>
+                      <div>
+                        <input
+                          disabled
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none text-lg font-montserrat"
+                          type="text"
+                          placeholder="College Email"
+                          aria-label="College Email"
+                        />
+                      </div>
                     </div>
 
-                    <div className="flex items-center border-b border-black my-4">
-                      <input
-                        value={rollnumber}
-                        onChange={(e) => setRollnumber(e.target.value)}
-                        className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none text-lg font-montserrat"
-                        type="text"
-                        placeholder="Roll Number"
-                        aria-label="Roll Number"
-                      />
+                    <div className="flex flex-col items-start border-b border-black my-4">
+                      <div className="px-2 text-xxs font-bold">Roll Number</div>
+                      <div>
+                        <input
+                          value={rollnumber}
+                          onChange={(e) => setRollnumber(e.target.value)}
+                          className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none text-lg font-montserrat"
+                          type="text"
+                          placeholder="Roll Number"
+                          aria-label="Roll Number"
+                        />
+                      </div>
                     </div>
 
-                    <div className="flex items-center border-b border-black my-4">
-                      <input
-                        value={branch}
-                        onChange={(e) => setBranch(e.target.value)}
-                        className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none text-lg font-montserrat"
-                        type="text"
-                        placeholder="Branch"
-                        aria-label="Branch"
-                      />
+                    <div className="flex flex-col items-start border-b border-black my-4">
+                      <div className="px-2 text-xxs font-bold">Branch</div>
+                      <div>
+                        <input
+                          value={branch}
+                          onChange={(e) => setBranch(e.target.value)}
+                          className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none text-lg font-montserrat"
+                          type="text"
+                          placeholder="Branch"
+                          aria-label="Branch"
+                        />
+                      </div>
                     </div>
 
-                    <div className="flex items-center border-b border-black my-4">
-                      <input
-                        value={programme}
-                        onChange={(e) => setProgramme(e.target.value)}
-                        className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none text-lg font-montserrat"
-                        type="text"
-                        placeholder="Programme"
-                        aria-label="Programme"
-                      />
+                    <div className="flex flex-col items-start border-b border-black my-4">
+                      <div className="px-2 text-xxs font-bold">Programme</div>
+                      <div>
+                        <input
+                          value={programme}
+                          onChange={(e) => setProgramme(e.target.value)}
+                          className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none text-lg font-montserrat"
+                          type="text"
+                          placeholder="Programme"
+                          aria-label="Programme"
+                        />
+                      </div>
                     </div>
 
-                    <div className="flex items-center border-b border-black my-4">
-                      <input
-                        value={phone}
-                        onChange={(e) => setPhone(Number(e.target.value))}
-                        className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none text-lg font-montserrat"
-                        type="text"
-                        placeholder="Phone No."
-                        aria-label="Phone No."
-                      />
+                    <div className="flex flex-col items-start border-b border-black my-4">
+                      <div className="px-2 text-xxs font-bold">
+                        Phone Number
+                      </div>
+                      <div>
+                        <input
+                          value={phone}
+                          onChange={(e) => setPhone(Number(e.target.value))}
+                          className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none text-lg font-montserrat"
+                          type="text"
+                          placeholder="Phone No."
+                          aria-label="Phone No."
+                        />
+                      </div>
                     </div>
 
-                    <div className="flex items-center border-b border-black my-4">
-                      <input
-                        value={backlogs}
-                        onChange={(e) => setBacklogs(Number(e.target.value))}
-                        className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none text-lg font-montserrat"
-                        type="text"
-                        placeholder="Backlogs"
-                        aria-label="Backlogs"
-                      />
+                    <div className="flex flex-col items-start border-b border-black my-4">
+                      <div className="px-2 text-xxs font-bold">Backlogs</div>
+                      <div>
+                        <input
+                          value={backlogs}
+                          onChange={(e) => setBacklogs(Number(e.target.value))}
+                          className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none text-lg font-montserrat"
+                          type="text"
+                          placeholder="Backlogs"
+                          aria-label="Backlogs"
+                        />
+                      </div>
                     </div>
 
-                    <div className="flex items-center border-b border-black my-4">
-                      <input
-                        value={cgpa}
-                        onChange={(e) => setCgpa(Number(e.target.value))}
-                        className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none text-lg font-montserrat"
-                        type="text"
-                        placeholder="CGPA"
-                        aria-label="CGPA"
-                      />
+                    <div className="flex flex-col items-start border-b border-black my-4">
+                      <div className="px-2 text-xxs font-bold">CGPA</div>
+                      <div>
+                        <input
+                          value={cgpa}
+                          onChange={(e) => setCgpa(Number(e.target.value))}
+                          className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none text-lg font-montserrat"
+                          type="text"
+                          placeholder="CGPA"
+                          aria-label="CGPA"
+                        />
+                      </div>
                     </div>
 
-                    <div className="flex items-center border-b border-black my-4">
-                      <input
-                        value={percentage10th}
-                        onChange={(e) =>
-                          setPercentage10th(Number(e.target.value))
-                        }
-                        className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none text-lg font-montserrat"
-                        type="text"
-                        placeholder="10th Percentage"
-                        aria-label="10th Percentage"
-                      />
+                    <div className="flex flex-col items-start border-b border-black my-4">
+                      <div className="px-2 text-xxs font-bold">
+                        10th Percentage
+                      </div>
+                      <div>
+                        <input
+                          value={percentage10th}
+                          onChange={(e) =>
+                            setPercentage10th(Number(e.target.value))
+                          }
+                          className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none text-lg font-montserrat"
+                          type="text"
+                          placeholder="10th Percentage"
+                          aria-label="10th Percentage"
+                        />
+                      </div>
                     </div>
 
-                    <div className="flex items-center border-b border-black my-4">
-                      <input
-                        value={percentage12th}
-                        onChange={(e) =>
-                          setPercentage12th(Number(e.target.value))
-                        }
-                        className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none text-lg font-montserrat"
-                        type="text"
-                        placeholder="12th Percentage"
-                        aria-label="12th Percentage"
-                      />
+                    <div className="flex flex-col items-start border-b border-black my-4">
+                      <div className="px-2 text-xxs font-bold">
+                        12th Percentage
+                      </div>
+                      <div>
+                        <input
+                          value={percentage12th}
+                          onChange={(e) =>
+                            setPercentage12th(Number(e.target.value))
+                          }
+                          className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none text-lg font-montserrat"
+                          type="text"
+                          placeholder="12th Percentage"
+                          aria-label="12th Percentage"
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -705,7 +745,7 @@ const UserProfilePage = () => {
                   <button
                     type="submit"
                     className="flex-shrink-0 bg-our-blue hover:bg-black border-black hover:border-black 
-                            text-sm border-4 text-white px-4 rounded-xl"
+                            text-sm border-4 text-white px-4 py-2 rounded"
                   >
                     Save Changes
                   </button>
