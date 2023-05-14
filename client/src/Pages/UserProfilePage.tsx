@@ -585,7 +585,13 @@ const UserProfilePage = () => {
                 </button>
               </div>
             </form>
-
+            <div className="absolute top-3 right-6 flex flex-col sm:flex-row justify-end">
+              <a href="/login">
+                <button className="float-left ml-2 mt-1 sm:mt-0 bg-our-blue hover:bg-blue-600 text-white text-sm rounded px-4 py-2">
+                  Log Out
+                </button>
+              </a>
+            </div>
             <div className="container my-10 mx-4">
               {!searchedUser ? (
                 list.map((items: any) => <UserTemplate items={items} />)
