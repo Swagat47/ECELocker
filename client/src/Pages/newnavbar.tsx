@@ -9,7 +9,7 @@ function Nav() {
 
   return (
     <nav className="w-full h-[15%] bg-our-blue">
-      <div className="justify-between px-2 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
+      <div className="justify-between mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
         <div>
           <div className="flex items-center justify-between py-3 md:py-4 md:block ">
             <img
@@ -56,9 +56,9 @@ function Nav() {
             </div>
           </div>
         </div>
-        <div className="flex col-span-6">
+        <div className="flex">
           <div
-            className={`flex-1 justify-self-center pb-2 mt-2 md:block md:pb-0 md:mt-0 ${
+            className={`flex-1 justify-self-center pb-2 mt-2 md:block md:pb-0 md:mt-0 z-50 bg-black w-full px-2  ${
               navbar ? "block" : "hidden"
             }`}
           >
@@ -73,13 +73,13 @@ function Nav() {
                 </div>
               </Link>
             </div>
-            <ul className="items-center mt-10  px-0 justify-center space-y-8 md:flex md:space-x-6 md:space-y-0 text-navtext font-robotoslab  text-2xl">
+            <ul className="items-center mt-10 justify-center space-y-8 md:flex md:space-x-6 md:space-y-0 text-navtext font-robotoslab  text-2xl">
               <li className="text-white  hover:text-indigo-200">
                 <Link to="/about">
                   <div>About</div>
                 </Link>
               </li>
-              <li className="text-white px-5 hover:text-indigo-200">
+              <li className="text-white hover:text-indigo-200">
                 <Link to="/notices">
                   <div>Notices</div>
                 </Link>
