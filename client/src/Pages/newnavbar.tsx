@@ -58,7 +58,7 @@ function Nav() {
         </div>
         <div className="flex">
           <div
-            className={`flex-1 justify-self-center pb-2 mt-2 md:block md:pb-0 md:mt-0 z-50 bg-black w-full px-2  ${
+            className={`flex-1 justify-self-center pb-2 mt-2 md:block md:pb-0 md:mt-0 z-50 bg-our-blue w-full px-2  ${
               navbar ? "block" : "hidden"
             }`}
           >

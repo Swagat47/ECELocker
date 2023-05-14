@@ -227,7 +227,7 @@ const UserTemplate = ({ items }: { items: any }) => {
                             ) : (
                               posts
                                 .filter((value: any) => {
-                                  if (searchText == "") {
+                                  if (searchText === "") {
                                     return value;
                                   } else if (
                                     value.name
@@ -373,9 +373,10 @@ const UserProfilePage = () => {
   const [isPlaced, setIsPlaced] = useState(false);
   const [list, setList] = useState([] as any);
   const [refresh, setRefresh] = useState(false);
-
+  const [searchValue, setSearchValue] = useState("");
   const [image, setImage] = useState(null as any);
   const [showAvatar, setShowAvatar] = useState(null as any);
+  const [searchedUser, setSearchedUser] = useState(null as any);
 
   //@ts-ignore
   const onDrop = useCallback((acceptedFiles) => {
@@ -435,6 +436,7 @@ const UserProfilePage = () => {
     setPhone(context?.info.phone);
     setIsUser(context?.info.role === "user" ? true : false);
     setIsPlaced(context?.info.placed);
+    console.log(searchValue, "searchedValue");
   }, [context?.info]);
 
   const handleSubmit = (e: any) => {
@@ -466,14 +468,29 @@ const UserProfilePage = () => {
     });
   };
 
-  console.log("img", showAvatar);
+  const handleSearch = (e: any) => {
+    e.preventDefault();
+    list.map((item: any) => {
+      if (item.rollnumber === searchValue) {
+        setSearchedUser(item);
+      }
+    });
+  };
+  useEffect(() => {
+    console.log(searchValue);
+    if(searchValue === ""){
+      setSearchedUser(null);
+    }
+  },[searchValue]);
+
+  // console.log("img", showAvatar);
   return (
     <div className="flex flex-col md:flex-row h-screen w-screen bg-white overflow-x-hidden">
       {isUser ? (
         <>
           <div
             id="LBG"
-            className="h-full w-full md:w-[30%] xl:w-1/4 bg-our-blue flex flex-col items-center justify-center"
+            className="h-full w-full md:w-[30%] xl:w-1/4 bg-our-blue flex flex-col justify-between items-center"
           >
             {/* <div className=" w-52 h-52 shrink-0 grow-0 bg-red-600 rounded-full">
              
@@ -482,8 +499,8 @@ const UserProfilePage = () => {
             {/* <div className="grid grid-cols-2 gap-4 sm:grid-cols-1"> */}
 
             {showAvatar === null || showAvatar.length === 0 ? (
-              <div className="flex flex-wrap justify-center sm:w-1/2 lg:w-1/2 mt-1  pt-1 sm:pt-5">
-                <div className="w-full px-4 pb-4  my-4">
+              <div className="flex flex-wrap justify-center sm:w-1/2 lg:w-1/2 mt-1 pt-1 sm:pt-5">
+                <div className="w-full px-4 pb-4 my-4">
                   <img
                     src={defaultuserimg}
                     alt="..."
@@ -492,7 +509,7 @@ const UserProfilePage = () => {
                 </div>
               </div>
             ) : (
-              <div className="flex flex-wrap justify-center md:w-1/2 lg:w-1/2 mt-1  pt-1 sm:pt-5">
+              <div className="flex flex-wrap justify-center md:w-1/2 lg:w-1/2 mt-1 pt-1 sm:pt-5">
                 <div className="w-full px-4 pb-4  my-4">
                   <img
                     src={`${backendUrl}/api/file/${showAvatar[0].docId}`}
@@ -503,12 +520,16 @@ const UserProfilePage = () => {
               </div>
             )}
 
-            <div className="mt-5 grid-cols-1 gap-2 font-montserrat text-white text-xl">
+            <div className="grid-cols-1 gap-2 font-montserrat text-white text-xl">
               <div className="text-center">{name}</div>
               <div className="text-center">{email}</div>
               <div className="text-center">{programme}</div>
             </div>
-            {isPlaced ? (
+
+            <div className="h-1/6">
+              {/*this div is added to add some space */}
+            </div>
+            {/* {isPlaced ? (
               <div className="mt-20 bg-[#00cc00] text-lg font-montserrat text-white px-12 py-2 rounded-lg">
                 Placed
               </div>
@@ -516,9 +537,9 @@ const UserProfilePage = () => {
               <div className="mt-20 bg-[#d9d9d9] text-lg font-montserrat text-black px-12 py-2 rounded-lg">
                 Placed
               </div>
-            )}
+            )} */}
 
-            <div className="flex flex-col md:flex-col mt-2 sm:mt-10 bg-our-blue text-sm lg:text-lg font-montserrat h-36 w-full  rounded-lg leading-1 mx-5 justify-end">
+            <div className="flex flex-col bg-our-blue text-sm lg:text-lg font-montserrat h-36 w-full rounded-lg">
               <div
                 className="bg-white border-2 h-full px-12 py-2"
                 {...getRootProps()}
@@ -761,7 +782,7 @@ const UserProfilePage = () => {
             id="RBG"
             className="flex flex-col w-full h-screen my-auto items-center"
           >
-            <form className="mt-3">
+            <form className="mt-3" onSubmit={handleSearch}>
               <label
                 htmlFor="default-search"
                 className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
@@ -790,12 +811,13 @@ const UserProfilePage = () => {
                   type="search"
                   id="default-search"
                   className="py-4 pl-10 pr-48 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 "
-                  placeholder="Search by Name, Roll Number..."
-                  required
+                  placeholder="Search by Roll Number..."
+                  value={searchValue}
+                  onChange={(event) => setSearchValue(event.target.value)}
                 />
                 <button
                   type="submit"
-                  className="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 "
+                  className="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2"
                 >
                   Search
                 </button>
@@ -803,9 +825,11 @@ const UserProfilePage = () => {
             </form>
 
             <div className="container my-10 mx-4">
-              {list.map((items: any) => (
-                <UserTemplate items={items} />
-              ))}
+              {!searchedUser ? (
+                list.map((items: any) => <UserTemplate items={items} />)
+              ) : (
+                <UserTemplate items={searchedUser} />
+              )}
             </div>
           </div>
         </>

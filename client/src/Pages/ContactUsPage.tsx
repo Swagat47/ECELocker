@@ -25,7 +25,7 @@ const ContactUsPage = () => {
         setEmail("");
         setMessage("");
         alert(
-          "Mail has been sent to your email id. Please verify your email id to login."
+          "Mail has been sent to your email id."
         );
       })
       .catch((err) => {
