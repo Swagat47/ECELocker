@@ -439,10 +439,7 @@ const UserProfilePage = () => {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    if (
-      context?.info?.clusters?.length === 0 ||
-      context?.info?.role === undefined
-    ) {
+    if (context?.info?.role === undefined) {
       alert("Please select atleast 1 cluster");
       return;
     }
@@ -458,12 +455,14 @@ const UserProfilePage = () => {
       percentage12th,
       backlogs,
       phone,
-      clusters: context?.info?.clusters,
+      // clusters: context?.info?.clusters,
+      clusters: [1],
       role: context?.info?.role,
       placed: context?.info?.placed,
     };
     axios.post(`${backendUrl}/api/updateInfo`, newInfo).then((res) => {
       context?.setInfo(newInfo);
+      alert("Profile Updated Successfully");
     });
   };
 
@@ -507,9 +506,7 @@ const UserProfilePage = () => {
             <div className="mt-5 grid-cols-1 gap-2 font-montserrat text-white text-xl">
               <div className="text-center">{name}</div>
               <div className="text-center">{email}</div>
-              <div className="text-center">
-                {programme}
-              </div>
+              <div className="text-center">{programme}</div>
             </div>
             {isPlaced ? (
               <div className="mt-20 bg-[#00cc00] text-lg font-montserrat text-white px-12 py-2 rounded-lg">
