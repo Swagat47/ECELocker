@@ -83,7 +83,7 @@ const authCtrl = {
       const url = `${CLIENT_URL}/active/${active_token}`;
 
       if (validateEmail(email)) {
-        sendMail(email, url, "NITH Verify your email");
+        sendMail(email, url, "NITH ECE Locker: Verify your email");
         return res.json({ msg: "Success!! Please check your email" });
       }
     } catch (err) {

@@ -1,4 +1,4 @@
-import campus from "../frontend_Reference/campus.png";
+import campus from "../frontend_Reference/campus.webp";
 import recruiterlogo from "../frontend_Reference/buildings.png";
 import opportunitylogo from "../frontend_Reference/money.png";
 import usericon from "../frontend_Reference/usericon.png";
@@ -40,7 +40,7 @@ const HomePage = () => {
     </div>
 
 </div>  */}
-      <Nav/>
+      <Nav />
 
       <div className="IMG flex-row relative w-screen h-[60%] bg-black ">
         <img

@@ -1,4 +1,4 @@
-import campus from "../frontend_Reference/campus.png";
+import campus from "../frontend_Reference/campus.webp";
 import { backendUrl } from "../config";
 import nithlogo from "../frontend_Reference/nit-hamirpurlogo.png";
 import userlogo from "../frontend_Reference/profileuser.png";
@@ -295,23 +295,22 @@ const OpportunitiesPage = () => {
         </div>
       </nav>
       <div className=" flex-col items-center justify-center py-4">
-        
-          <div className="flex flex-col gap-4">
-            <input
-              className="border text-white bg-black rounded-lg px-4 py-2"
-              type="file"
-              accept="pdf/*"
-              id="file"
-              onChange={handleChange}
-            />
-            <button
-              className="text-white bg-black rounded-lg px-4 py-2"
-              onClick={handleUpload}
-            >
-              Upload
-            </button>
-          </div>
-   
+        <div className="flex flex-col gap-4">
+          <input
+            className="border text-white bg-black rounded-lg px-4 py-2"
+            type="file"
+            accept="pdf/*"
+            id="file"
+            onChange={handleChange}
+          />
+          <button
+            className="text-white bg-black rounded-lg px-4 py-2"
+            onClick={handleUpload}
+          >
+            Upload
+          </button>
+        </div>
+
         {loading ? (
           <div className="h-10 flex items-center justify-center">
             <PulseLoader color="#0f1129" />

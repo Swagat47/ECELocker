@@ -79,7 +79,7 @@ const RegisterPage = () => {
       </div> */}
       <div className="lg:block hidden h-screen w-1/2 ">
         <img
-          className="object-fill justify-center border-8 border-our-blue rounded-2xl h-full w-full"
+          className="object-fill justify-center border-8 border-our-blue h-full w-full"
           src={ped}
           alt=""
         />

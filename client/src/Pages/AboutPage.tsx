@@ -1,4 +1,4 @@
-import campus from "../frontend_Reference/campus.png";
+import campus from "../frontend_Reference/campus.webp";
 import campus3 from "../frontend_Reference/campus3.jpg";
 import nithlogo from "../frontend_Reference/nit-hamirpurlogo.png";
 import userlogo from "../frontend_Reference/profileuser.png";
@@ -78,15 +78,16 @@ const AboutusPage = () => {
           ECE Locker
         </h1>
         <p className="color: hsl(218, 81%, 95%) pb-8 px-5 text-md ">
-          We provide easy access to all your placement issues whether it be
-          accessing new notices, receiving test updates & interview updates,
-          viewing the list of companies or accessing the previous year’s
-          placement record. The process of placement is made easier for students
-          with easy access to all their requirements. Admins will have the ease
-          to manage student and company data all in one place. The workload on
-          the TPR’s will be reduced significantly and the process of placement
-          will be in a more organized manner.
-        {/*change plij*/}
+          We provide easy access to all of your student information management
+          issues whether it be accessing personal information such as name, roll
+          number, year, personal e-mail, CGPI, contact number, Class 10th, 12th
+          percentage, number of active backlogs, accessing new notices, viewing
+          result, downloading and uploading study materials, uploading/viewing
+          various personal documents such as certificates, resume, marksheet
+          etc. This website can be used as information and data sharing system
+          for the college. It stores the data of the students at a single place,
+          thus effectively managing the student database.
+          {/*change plij*/}
         </p>
       </div>
 
