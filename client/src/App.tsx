@@ -34,11 +34,11 @@ function App() {
     <>
       <Router>
         <Routes>
-          {/* <Route path="/active/:token" element={<ActivatePage />} /> */}
+          <Route path="/active/:token" element={<ActivatePage />} />
         </Routes>
         <Routes>
           <Route element={context?.info ? <Navigate to={"/"} /> : <Outlet />}>
-            <Route path="/active" element={<ActivatePage />} />
+            {/* <Route path="/active" element={<ActivatePage />} /> */}
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/registeradmin" element={<RegisterAdminPage />} />
