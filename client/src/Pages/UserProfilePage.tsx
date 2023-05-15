@@ -416,6 +416,7 @@ const UserProfilePage = () => {
                       <div className="px-2 text-xxs font-bold">Branch</div>
                       <div>
                         <input
+                          disabled
                           value={branch}
                           onChange={(e) => setBranch(e.target.value)}
                           className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none text-lg font-montserrat"

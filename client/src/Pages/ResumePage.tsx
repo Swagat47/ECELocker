@@ -136,7 +136,7 @@ function Resume({ resume, handleDelete }: any) {
         className="text-white bg-black rounded-lg px-4 w-48 py-1 my-2"
         onClick={() => handleDelete(resume.docId)}
       >
-        Delete Resume
+        Delete
       </button>
     </div>
   );

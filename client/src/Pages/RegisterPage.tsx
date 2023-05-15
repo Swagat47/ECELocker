@@ -176,7 +176,7 @@ const RegisterPage = () => {
                     <option className="text-lg" value="0" selected disabled>
                       Branch
                     </option>
-                    <option
+                    {/* <option
                       className="text-lg"
                       value="Computer Science (B.Tech)"
                     >
@@ -184,7 +184,7 @@ const RegisterPage = () => {
                     </option>
                     <option className="text-lg" value="Computer Science (Dual)">
                       Computer Science (Dual)
-                    </option>
+                    </option> */}
                     <option
                       className="text-lg"
                       value="Electronics and Communication (B.Tech)"
@@ -197,7 +197,7 @@ const RegisterPage = () => {
                     >
                       Electronics and Communication (Dual Degree)
                     </option>
-                    <option className="text-lg" value="Mechanical">
+                    {/* <option className="text-lg" value="Mechanical">
                       Mechanical
                     </option>
                     <option className="text-lg" value="Civil">
@@ -211,7 +211,7 @@ const RegisterPage = () => {
                     </option>
                     <option className="text-lg" value="Material Science">
                       Material Science
-                    </option>
+                    </option> */}
                   </select>
                 </div>
 
